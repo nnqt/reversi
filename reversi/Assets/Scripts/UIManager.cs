@@ -50,6 +50,33 @@ public class UIManager : MonoBehaviour
         yield return null;
     }
 
+    public IEnumerator SetPlayerTextOnline(Player currentPlayer, bool isMyTurn)
+    {
+        if (currentPlayer == Player.Black )
+        {
+            if (!isMyTurn)
+            {
+                topText.text = "Black's Turn <sprite name=DiscBlackUp> (Opponent Turn)";
+            }
+			else
+			{
+                topText.text = "Black's Turn <sprite name=DiscBlackUp> (Your Turn)";
+            }
+        }
+        else if (currentPlayer == Player.White)
+        {
+            if (!isMyTurn)
+            {
+                topText.text = "White's Turn <sprite name=DiscWhiteUp> (Opponent Turn)";
+            }
+            else
+            {
+                topText.text = "White's Turn <sprite name=DiscWhiteUp> (Your Turn)";
+            }
+        }
+        yield return null;
+    }
+
     public void SetTopText (string message)
 	{
         topText.text = message;

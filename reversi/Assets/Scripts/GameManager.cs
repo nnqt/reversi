@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
     private UIManager uiManager;
 
     private Dictionary<Player, Disc> discPrefabs = new Dictionary<Player, Disc>();
-    static public GameState gameState = new GameState();
+    static public GameState gameState = new GameState(true);
     private Disc[,] discs = new Disc[8, 8];
     private List<GameObject> highlights = new List<GameObject>();
 
@@ -246,7 +246,7 @@ public class GameManager : MonoBehaviour
         uiManager.HideEndScreen();
         Scene activeScene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(activeScene.name);
-        gameState = new GameState();
+        gameState = new GameState(true);
         Start();
 	}
 

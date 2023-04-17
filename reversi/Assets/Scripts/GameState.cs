@@ -16,7 +16,7 @@ public class GameState
     public Player Player2 { get; private set; }
     public Player AI { get; private set; }
 
-    public GameState()
+    public GameState(bool isAI)
     {
         Board = new Player[Rows, Cols];
         Board[3, 3] = Player.White;
@@ -30,25 +30,44 @@ public class GameState
             {Player.White, 2 }
         };
 
+
+        Random rand = new Random();
+        var playFirst = rand.Next(0, 2);
+        if (isAI)
+        {
+			if (playFirst == 0)
+			{
+                Player1 = Player.White;
+                Player2 = Player.None;
+                AI = Player.Black;
+			}
+			else
+			{
+                Player1 = Player.Black;
+                Player2 = Player.None;
+                AI = Player.White;
+			}
+        }
+        else
+        {
+            if (playFirst == 0)
+			{
+                Player1 = Player.Black;
+                Player2 = Player.White;
+                AI = Player.None;
+            }
+			else
+			{
+                Player1 = Player.White;
+                Player2 = Player.Black;
+                AI = Player.None;
+			}
+        }
         CurrentPlayer = Player.Black;
         LegalMoves = FindLegalMoves(CurrentPlayer);
 
         GameOver = false;
 
-        Random rand = new Random();
-        var playFirst = rand.Next(0, 2);
-        if (playFirst == 0)
-        {
-            Player1 = Player.White;
-            Player2 = Player.None;
-            AI = Player.Black;
-        }
-        else
-        {
-            Player1 = Player.Black;
-            Player2 = Player.None;
-            AI = Player.White;
-        }
     }
 
     public bool MakeMove(Position pos, out MoveInfo moveInfo)
@@ -220,7 +239,7 @@ public class GameState
 
     public GameState Clone()
 	{
-        GameState newGameState = new GameState();
+        GameState newGameState = new GameState(true);
         for (int r = 0; r < Rows; r++)
 		{
             for (int c = 0; c < Cols; c++)
