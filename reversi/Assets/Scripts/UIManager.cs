@@ -56,22 +56,22 @@ public class UIManager : MonoBehaviour
         {
             if (!isMyTurn)
             {
-                topText.text = "Black's Turn <sprite name=DiscBlackUp> (Opponent Turn)";
+                topText.text = "<sprite name=DiscBlackUp> (Opponent Turn)";
             }
 			else
 			{
-                topText.text = "Black's Turn <sprite name=DiscBlackUp> (Your Turn)";
+                topText.text = "<sprite name=DiscBlackUp> (Your Turn)";
             }
         }
         else if (currentPlayer == Player.White)
         {
             if (!isMyTurn)
             {
-                topText.text = "White's Turn <sprite name=DiscWhiteUp> (Opponent Turn)";
+                topText.text = "<sprite name=DiscWhiteUp> (Opponent Turn)";
             }
             else
             {
-                topText.text = "White's Turn <sprite name=DiscWhiteUp> (Your Turn)";
+                topText.text = "<sprite name=DiscWhiteUp> (Your Turn)";
             }
         }
         yield return null;

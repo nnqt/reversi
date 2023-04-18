@@ -58,8 +58,8 @@ public class GameState
             }
 			else
 			{
-                Player1 = Player.White;
-                Player2 = Player.Black;
+                Player2 = Player.White;
+                Player1 = Player.Black;
                 AI = Player.None;
 			}
         }
